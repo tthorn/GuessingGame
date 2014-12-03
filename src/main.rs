@@ -23,29 +23,29 @@ fn main() {
     let num = match input_num{
       Some(num) => num,
       None  => {
-        println!("Please input a number.")
+      println!("Please input a number.")
+      return;
+    }
+   };
+  match compare(num, toGuess){
+    Less => {
+      println!("Guess is too small");
+      lower = num;
+      },
+      Greater => {
+        println!("Guess is too large");
+        upper = num;
+      },
+      Equal => {
+        println!("You win!");
         return;
-      }
-    };
-    match compare(num, toGuess){
-      Less => {
-        println!("Guess is too small");
-        lower = num;
-        },
-        Greater => {
-          println!("Guess is too large");
-          upper = num;
-          },
-          Equal => {
-            println!("You win!");
-            return;
-            },
-          }
-        }
-      }
+      },
+    }
+  }
+}
 
-      fn compare(a: uint, b: uint) -> Ordering {
+fn compare(a: uint, b: uint) -> Ordering {
         if a < b { Less }
         else if a > b { Greater }
         else { Equal }
-      }
+}
